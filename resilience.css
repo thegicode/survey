@@ -7,6 +7,7 @@ body[data-scroll=false]{
 h1 {
     margin-bottom: 40px;
 }
+
 button{
     min-width: 60px;
     padding: 7px;
@@ -32,7 +33,7 @@ button:active{
     margin-top: 30px;
     padding-left: 1rem;
 }
-li{
+.survey-item{
     padding-bottom: 20px;
     /*border-bottom: dashed 1px rgba(0, 0, 0, 0.2);*/
 }
@@ -42,13 +43,13 @@ li{
 }
 .inputs{
 }
-label {
+.inputs label {
     display: flex;
     align-items: center;
     padding: 5px;
     font-size: 14px;
 }
-input{
+.inputs input{
     margin-right: 7px;
 }
 .submitButton{
@@ -71,12 +72,40 @@ input{
     top: 0; right: 0; bottom: 0;
     width: 90%;
     box-sizing: border-box;
-    padding: 1rem;
+    padding: 1.5rem;
     background: rgba(255, 255, 255, 1);
+    color: rgba(0, 0, 0, 0.9);
 }
 .result[data-hidden=true]{
     display: none;
 }
+.result h2{
+    margin-top: 0;
+}
+.result h3{
+    margin: 30px 0;
+}
+.result h3 span{
+    font-size: 1rem;
+}
+.result .title{
+    margin: 30px 0 10px;
+}
+.myPoint{
+    padding: 10px 10px 5px;
+    border-bottom: 1px solid rgba(0, 125, 0, 0.3);
+    background: rgba(0, 125, 0, 0.1);
+    font-size: 1rem;
+    clor: rgba(0, 0, 0, 0.8);
+}
+.myPoint .__point{
+    font-size: 1.2rem;
+    color: rgba(0, 150, 0, 0.9);
+}
+.section:not(:nth-of-type(1)){
+    margin-top: 30px;
+}
+
 .closeButton{
     font-size: 14px;
 }

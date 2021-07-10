@@ -20,16 +20,18 @@
         <button type="submit" class="submitButton">완료</button>
     </form>
 
-    <div class="backdrop" id="backdrop" data-hidden="true"></div>
+    <div class="backdrop" id="backdrop" data-hidden="false"></div>
 
-    <div class="result" id="result" data-hidden="true">
+    <div class="result" id="result" data-hidden="false">
         <h2>테스트 결과</h2>
 
-        <h3>회복탄력성 지수 = 자기조절능력 + 대인관계능력 + 긍정성</h3>
         <div class="myPoint">
             나의 회복탄력성 지수 :
-            <span class="__point" data-point="total"></span>
+            <strong class="__point" data-point="total">300</strong>
         </div>
+        <h3>회복탄력성 지수 <br> 
+            <span>= 자기조절능력 + 대인관계능력 + 긍정성</span>
+        </h3>
         <dl class="guides">
             <dt>220점 이상</dt>
             <dd>당신은 대단히 회복 탄력성이 높은 사람이다. 웬만한 불행한 사건은 당신을 흔들어놓지 못한다. 
@@ -48,13 +50,13 @@
             </dd>
         </dl>
 
-        <h3>상세 내용</h3>
-        <section>
-            <h4>자기조절능력 = 감정조절력 + 충동통제력 + 원인분석력</h4>
+        <h3 class="title">상세 점수</h3>
+        <section class="section">
             <div class="myPoint">
                 나의 자기조절능력 점수 : 
-                <span class="__point" data-point="p1"></span>
+                <strong class="__point" data-point="p1"></strong>
             </div>
+            <h4>자기조절능력 = 감정조절력 + 충동통제력 + 원인분석력</h4>
             <dl class="guides">
                 <dt>75점 이상(상위 7% 이내)</dt>
                 <dd>자부심을 가져도 좋다.</dd>
@@ -67,12 +69,12 @@
             </dl>
         </section>
 
-        <section>
-            <h4>대인관계능력 = 소통능력 + 공감능력 + 자아확장력</h4>
+        <section class="section">
             <div class="myPoint">
                 나의 대인관계능력 점수 : 
-                <span class="__point" data-point="p2"></span>
+                <strong class="__point" data-point="p2"></strong>
             </div>
+            <h4>대인관계능력 = 소통능력 + 공감능력 + 자아확장력</h4>
             <dl class="guides">
                 <dt>80점 이상(상위 6% 이내)</dt>
                 <dd>대인관계와 사회성이 아주 뛰어난 편</dd>
@@ -85,12 +87,12 @@
             </dl>
         </section>
 
-        <section>
-            <h4>긍정성 = 자아낙관성 + 생활만족도 + 감사하기</h4>
+        <section class="section">
             <div class="myPoint">
                 나의 대인관계능력 점수 : 
-                <span class="__point" data-point="p3"></span>
+                <strong class="__point" data-point="p3"></strong>
             </div>
+            <h4>긍정성 = 자아낙관성 + 생활만족도 + 감사하기</h4>
             <dl class="guides">
                 <dt>75점 이상(상위 6% 이내)</dt>
                 <dd>당신은 대단히 긍정성이 높은 사람</dd>
@@ -108,7 +110,7 @@
 
 
     <template>
-        <li>
+        <li class="survey-item">
             <p class="question" data-text="question"></p>
             <div class="inputs">
                 <label>
