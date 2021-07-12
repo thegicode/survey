@@ -59,7 +59,7 @@ const parts = [18, 36, 53]
 // Selector
 const formEl = document.querySelector('form');
 const surveyEl = document.querySelector('#survey');
-const templateEl = document.querySelector('template');
+const templateEl = document.querySelector('[data-template=surveys]');
 const backdropEl = document.querySelector('#backdrop');
 const resultEl = document.querySelector('#result');
 
@@ -142,7 +142,7 @@ function getPoints(data){
 }
 
 function resultShow(points){
-    console.log(points)
+    console.log(points);
 
     if(points.length < 3) {
         return;
@@ -150,18 +150,24 @@ function resultShow(points){
 
     let total = 0;
     points.forEach( p =>  total = total + p);
+
     resultEl
         .querySelector('[data-point=total]')
-        .textContent = total
+        .textContent = total;
+
     resultEl
         .querySelector('[data-point=p1]')
-        .textContent = points[0]
+        .textContent = points[0];
+
     resultEl
         .querySelector('[data-point=p2]')
-        .textContent = points[1]
+        .textContent = points[1];
+
     resultEl
         .querySelector('[data-point=p3]')
-        .textContent = points[2]
+        .textContent = points[2];
+
+    
 
     document.body.dataset.scroll = false;
     backdropEl.dataset.hidden = false;
