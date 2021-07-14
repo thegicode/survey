@@ -1,4 +1,4 @@
-const questions = [
+const QUESTION_STRINGS = [
     '나는 어려운 일이 닥쳤을 때 감정을 통제할 수 있다',
     '내가 무슨 생각을 하면, 그 생각이 내 기분에 어떤 영향을 미칠지 잘 알아 챈다',
     '이슈가 되는 문제를 가족이나 친구들과 토론할 때 내 감정을 잘 통제할 수 있다',
@@ -53,128 +53,162 @@ const questions = [
     '세상을 둘러볼 때, 내가 고마워 할 것은 별로 없다',
     '사람이나 일에 대한 고마움을 한참 시간이 지난 후에야 겨우 느낀다',
 ];
-const exceptions = [4, 5, 6, 10, 11, 12, 16, 17, 18, 22, 23, 24, 28, 29, 30, 34, 35, 36, 40, 41, 42, 51, 52, 53];
-const parts = [18, 36, 53]
+const EXCEPTION_NUMBERS = [4, 5, 6, 10, 11, 12, 16, 17, 18, 22, 23, 24, 28, 29, 30, 34, 35, 36, 40, 41, 42, 51, 52, 53];
+const PARTS_NUMBERS = [18, 36, 53]
 
-// Selector
-const formEl = document.querySelector('form');
-const surveyEl = document.querySelector('#survey');
-const templateEl = document.querySelector('[data-template=surveys]');
 const backdropEl = document.querySelector('#backdrop');
 const resultEl = document.querySelector('#result');
 
-const cpnt = surveyEl.cloneNode(true);
-let points = [];
 
-// Make markup
-const getElements = (text, index) => {
-    const element = templateEl
-                    .content
-                    .firstElementChild
-                    .cloneNode(true)
+/** init */
+controlApp();
+
+
+function controlApp(){
+    const surveyEl = document.querySelector('#survey');
+    const cpnt = surveyEl.cloneNode(true);
+
+    QUESTION_STRINGS
+        .map( (text, index) => getElement(text, index))
+        .forEach( element => {
+            cpnt.appendChild(element)
+        });
+    surveyEl.replaceWith(cpnt);
+
+    addEvents();
+}
+
+
+
+/** Make Element and return element */
+function getElement(text, index){
+    if (!text) {
+        return;
+    }
+
+    if (index < 0) {
+        return;
+    }
+    
+    const element = 
+        document.querySelector('[data-template=surveys]')
+            .content
+            .firstElementChild
+            .cloneNode(true);
+
     element
         .querySelector('[data-text=question]')
-        .textContent = text
+        .textContent = text;
+
     element
-        .querySelectorAll('input')
-        .forEach( (radioEl, idx) => {
-            radioEl.name = `q${index+1}`;
+        .querySelectorAll('input[type=radio]')
+        .forEach( (el, idx) => {
+            el.name = `q${index+1}`;
 
             // For test
             if(idx === 3) {
-                radioEl.checked = true;
+                el.checked = true;
             }
 
-        })
-    return element
-}
+        });
 
-questions
-    .map( (text, index) => getElements(text, index))
-    .forEach( element => {
-        cpnt.appendChild(element)
-    });
-surveyEl.replaceWith(cpnt);
+    return element;
+};
 
 
+/** */
+function addEvents() {
 
-// form event
-formEl.addEventListener('submit', function(event) {
-    event.preventDefault();
+    // Form submit event 
+    // form data 받은 다음 getScore 함수로 실행, 배열로 돌려 받음
+    document
+        .querySelector('#form')
+        .addEventListener('submit', function(event) {
+            event.preventDefault();
 
-    const data = new FormData(this);
-    getPoints(data);
-    // let obj = {};
+            const data = new FormData(this);
+            const scores = getScores(data);
+            // let obj = {};
 
-    // console.log(obj);
+            // console.log(obj);
 
-    resultShow(points);
-    points = [];
+            showResult(scores);
 
-});
+        });
 
-backdropEl.addEventListener('click', () => {
-    resultHide();
-});
-resultEl.querySelector('button')
-    .addEventListener('click', () => {
-        resultHide();
-})
+    backdropEl
+        .addEventListener('click', hideResult );
 
-function getPoints(data){
+    resultEl
+        .querySelector('button')
+        .addEventListener('click', hideResult )
+};
+
+
+/** 각 영역별[PARTS_NUMBERS로 구분] 점수를 합산하여 배열로 리턴 */
+function getScores(data){
+
+    let scores = [];
     let sum = 0;
+
     for (const [key, value] of data) {
 
         const idx = Number(key.slice(1));
-        let point = Number(value);
+        let score = Number(value);
 
-        if (exceptions.includes(idx)) {
-            point = 6 - value;
+        if (EXCEPTION_NUMBERS.includes(idx)) {
+            score = 6 - value;
         }
 
-        sum = sum + point;
-        if (parts.includes(idx)) {
-            points.push(sum);
+        sum = sum + score;
+        if (PARTS_NUMBERS.includes(idx)) {
+            scores.push(sum);
             sum = 0;
         }
-        // obj[key] = point;
+        // obj[key] = score;
     };
+
+    return scores;
 }
 
-function resultShow(points){
-    console.log(points);
 
-    if(points.length < 3) {
+/** 결과 점수 표시 후 레이어 보이기 */
+function showResult(scores){
+    console.log(scores);
+
+    if(scores.length < 3) {
         return;
     }
 
     let total = 0;
-    points.forEach( p =>  total = total + p);
+    scores.forEach( p =>  total = total + p);
 
     resultEl
-        .querySelector('[data-point=total]')
+        .querySelector('[data-score=total]')
         .textContent = total;
 
     resultEl
-        .querySelector('[data-point=p1]')
-        .textContent = points[0];
+        .querySelector('[data-score=p1]')
+        .textContent = scores[0];
 
     resultEl
-        .querySelector('[data-point=p2]')
-        .textContent = points[1];
+        .querySelector('[data-score=p2]')
+        .textContent = scores[1];
 
     resultEl
-        .querySelector('[data-point=p3]')
-        .textContent = points[2];
-
-    
+        .querySelector('[data-score=p3]')
+        .textContent = scores[2];
 
     document.body.dataset.scroll = false;
     backdropEl.dataset.hidden = false;
     resultEl.dataset.hidden = false;
 }
-function resultHide(){
+
+
+/** 점수 초기화 & 결과 레이어 숨기기 */
+function hideResult(){
     document.body.dataset.scroll = true;
     backdropEl.dataset.hidden = true;
     resultEl.dataset.hidden = true;
 }
+

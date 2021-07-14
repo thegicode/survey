@@ -7,44 +7,49 @@
     <link rel="stylesheet" type="text/css" href="resilience.css">
 </head>
 <body data-scroll="true">
-    <h1>
-        나의 회복탄력성 지수는?<br>
-        KRQ-53 테스트
-    </h1>
 
-    <p>각 문항을 읽은 후 해당하는 항목에 체크해주세요.</p>
+    <main class="main">
+        <h1>
+            나의 회복탄력성 지수는?<br>
+            KRQ-53 테스트
+        </h1>
 
-    <form>
-        <ol class="survey" id="survey">
-        </ol>
-        <button type="submit" class="submitButton">완료</button>
-    </form>
+        <p>각 문항을 읽은 후 해당하는 항목에 체크해주세요.</p>
 
-    <div class="backdrop" id="backdrop" data-hidden="false"></div>
+        <form id="form">
+            <ol class="survey" id="survey">
+            </ol>
+            <button type="submit" class="submitButton">완료</button>
+        </form>
+    </main>
 
-    <div class="result" id="result" data-hidden="false">
+
+    <div class="backdrop" id="backdrop" data-hidden="true"></div>
+
+
+    <div class="result" id="result" data-hidden="true">
         <h2>테스트 결과</h2>
 
-        <div class="myPoint">
+        <div class="myScore">
             나의 회복탄력성 지수 :
-            <strong class="__point" data-point="total">300</strong>
+            <strong class="__score" data-score="total">300</strong>
         </div>
         <h3>회복탄력성 지수 <br> 
             <span>= 1. 자기조절능력 + 2. 대인관계능력 + 3. 긍정성</span>
         </h3>
         <dl class="guides">
-            <dt data-p1="220">220점 이상</dt>
+            <dt data-p0="above_220">220점 이상</dt>
             <dd>당신은 대단히 회복 탄력성이 높은 사람이다. 웬만한 불행한 사건은 당신을 흔들어놓지 못한다. 
                 오히려 역경은 당신을 더 높은 곳으로 올려놓기 위한 스프링보드이니 즐겁게 받아들일 일이다.</dd>
-            <dt>212점 이상</dt>
+            <dt data-p0="above_212">212점 이상</dt>
             <dd>상위 20%</dd>
-            <dt data-p1="200">200점 이상</dt>
+            <dt data-p0="above_200">200점 이상</dt>
             <dd>안심</dd>
-            <dt data-p1="190">190점 이하(평균 195점)</dt>
+            <dt data-p0="below_190">190점 이하(평균 195점)</dt>
             <dd>회복탄력성을 높이기 위해 노력하는 것이 좋다.</dd>
-            <dt data-p1="180">180점 이하</dt>
+            <dt data-p0="below_180">180점 이하</dt>
             <dd>당신은 사소한 부정적인 사건에도 쉽게 영향 받는 나약한 존재다. 당신은 되튀어 오를 힘을 빨리 길러야 한다.</dd>
-            <dt data-p1="170">170점 이하</dt>
+            <dt data-p0="below_170">170점 이하</dt>
             <dd >당신은 깨지기 쉬운 유리 같은 존재라 할 수 있다. 작은 불행에도 쉽게 상처를 입게 되며 그 상처는 치유하기 어려울 것이다. 
                 하루하루 살얼음 위를 걷는 기분으로 살아온 당신은 지금 당장 회복탄력성을 높이기 위해 온 힘을 기울여야 한다.
             </dd>
@@ -52,11 +57,10 @@
 
         <h3 class="title">좀 더 상세하게 볼까요?</h3>
         <section class="section">
-            <h4>1. 자기조절능력 <br>
-                = 감정조절력 + 충동통제력 + 원인분석력</h4>
-            <div class="myPoint">
+            <h4>1. 자기조절능력 = 감정조절력 + 충동통제력 + 원인분석력</h4>
+            <div class="myScore">
                 나의 자기조절능력 점수 : 
-                <strong class="__point" data-point="p1"></strong>
+                <strong class="__score" data-score="p1"></strong>
             </div>
             <dl class="guides">
                 <dt>75점 이상(상위 7% 이내)</dt>
@@ -71,11 +75,10 @@
         </section>
 
         <section class="section">
-            <h4>2. 대인관계능력 <br> 
-                = 소통능력 + 공감능력 + 자아확장력</h4>
-            <div class="myPoint">
+            <h4>2. 대인관계능력 = 소통능력 + 공감능력 + 자아확장력</h4>
+            <div class="myScore">
                 나의 대인관계능력 점수 : 
-                <strong class="__point" data-point="p2"></strong>
+                <strong class="__score" data-score="p2"></strong>
             </div>
             <dl class="guides">
                 <dt>80점 이상(상위 6% 이내)</dt>
@@ -91,9 +94,9 @@
 
         <section class="section">
             <h4>3. 긍정성 = 자아낙관성 + 생활만족도 + 감사하기</h4>
-            <div class="myPoint">
+            <div class="myScore">
                 나의 대인관계능력 점수 : 
-                <strong class="__point" data-point="p3"></strong>
+                <strong class="__score" data-score="p3"></strong>
             </div>
             <dl class="guides">
                 <dt>75점 이상(상위 6% 이내)</dt>
@@ -112,7 +115,7 @@
 
 
     <template data-template="surveys">
-        <li class="survey-item">
+        <li class="survey">
             <p class="question" data-text="question"></p>
             <div class="inputs">
                 <label>
@@ -139,7 +142,8 @@
         </li>
     </template>
 
-    <template data-template="point">
+
+    <template data-template="here">
         <span>You're here"</span>
     </template>
 
