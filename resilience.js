@@ -89,7 +89,7 @@ function getElement(text, index){
     if (index < 0) {
         return;
     }
-    
+
     const element = 
         document.querySelector('[data-template=surveys]')
             .content
@@ -211,4 +211,5 @@ function hideResult(){
     backdropEl.dataset.hidden = true;
     resultEl.dataset.hidden = true;
 }
+
 
