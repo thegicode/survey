@@ -106,9 +106,9 @@ function getElement(text, index){
             el.name = `q${index+1}`;
 
             // For test
-            if(idx === 3) {
-                el.checked = true;
-            }
+            // if(idx === 3) {
+            //     el.checked = true;
+            // }
 
         });
 
@@ -131,6 +131,9 @@ function addEvents() {
             // let obj = {};
 
             // console.log(obj);
+            if(!scores){
+                return
+            }
 
             showResult(scores);
 
@@ -151,21 +154,42 @@ function getScores(data){
     let scores = [];
     let sum = 0;
 
+    let scoreKeys = [...data.keys()];
+
+    if( scoreKeys.length !== QUESTION_STRINGS.length ) {
+        let index = 1;
+        // scoreKeys.forEach( (key, value) => {
+        //     const keyNum = Number(key.split('q')[1]);
+        //     if (keyNum !== index) {
+        //         document.querySelector(`[name=q${index}]`).focus();
+        //         return
+        //     } 
+        //     index += 1;
+        // });
+        // return false;
+    }
+
     for (const [key, value] of data) {
+
 
         const idx = Number(key.slice(1));
         let score = Number(value);
 
+       
+        // 6에서 빼는 문제 계산 
         if (EXCEPTION_NUMBERS.includes(idx)) {
             score = 6 - value;
         }
 
         sum = sum + score;
+
+        // 영역 구분까지 합산 후 배열에 추가
         if (PARTS_NUMBERS.includes(idx)) {
             scores.push(sum);
             sum = 0;
         }
         // obj[key] = score;
+
     };
 
     return scores;
