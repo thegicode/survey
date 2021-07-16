@@ -69,14 +69,17 @@ controlApp();
 /** Main Control */
 function controlApp(){
     const surveyEl = document.querySelector('#survey');
-    const cpnt = surveyEl.cloneNode(true);
+    const fragment = new DocumentFragment;
+    // const cpnt = surveyEl.cloneNode(true);
 
     QUESTION_STRINGS
         .map( (text, index) => getElement(text, index))
         .forEach( element => {
-            cpnt.appendChild(element)
+            fragment.appendChild(element)
+            // cpnt.appendChild(element)
         });
-    surveyEl.replaceWith(cpnt);
+    surveyEl.appendChild(fragment);
+    // surveyEl.replaceWith(cpnt);
 
     addEvents();
 }
