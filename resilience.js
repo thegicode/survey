@@ -60,10 +60,13 @@ const backdropEl = document.querySelector('#backdrop');
 const resultEl = document.querySelector('#result');
 
 
+
 /** init */
 controlApp();
 
 
+
+/** Main Control */
 function controlApp(){
     const surveyEl = document.querySelector('#survey');
     const cpnt = surveyEl.cloneNode(true);
@@ -106,9 +109,9 @@ function getElement(text, index){
             el.name = `q${index+1}`;
 
             // For test
-            // if(idx === 3) {
-            //     el.checked = true;
-            // }
+            if(idx === 3) {
+                el.checked = true;
+            }
 
         });
 
@@ -116,21 +119,29 @@ function getElement(text, index){
 };
 
 
-/** */
+
+/** 모든 이벤트는 여기에 */
 function addEvents() {
 
-    // Form submit event 
-    // form data 받은 다음 getScore 함수로 실행, 배열로 돌려 받음
+    /** Form Submit Event
+      * Check validate가 true 이면
+      * Form data 받은 다음 
+      * getScore 함수로 배열로 점수를 받음
+      * Show result
+      */
     document
         .querySelector('#form')
         .addEventListener('submit', function(event) {
             event.preventDefault();
 
-            const data = new FormData(this);
-            const scores = getScores(data);
+            if (!validates(this)) {
+                return false;
+            }
+
+            const formData = new FormData(this);
+            const scores = getScores(formData);
             // let obj = {};
 
-            // console.log(obj);
             if(!scores){
                 return
             }
@@ -139,51 +150,64 @@ function addEvents() {
 
         });
 
+    /** 검정색 투명 레이어
+      * 클릭 시 결과 화면 hide 
+      */
     backdropEl
         .addEventListener('click', hideResult );
 
+    /** 결과 컴포넌트
+      * 닫기 버튼 클릭 시 결과 화면 hide
+      */
     resultEl
         .querySelector('button')
         .addEventListener('click', hideResult )
 };
 
 
+
+
+/** 유효성 검사 함수
+  * 모든 항목 체크 확인 : return true
+  * 체크안되어 있으면 focus 이동 : return false
+  */
+function validates(form) {
+    const length = QUESTION_STRINGS.length;
+    for (let i=1 ; i <= length ; i++) {
+        const name = `q${i}`;
+        const radioNodes = form[name];
+        if (!radioNodes.value) {
+            document.querySelector(`[name=${name}]`).focus()
+            alert(`${name}번을 체크해주세요.`);
+            return false;
+        }
+    }
+    return true;
+}
+
+
+
 /** 각 영역별[PARTS_NUMBERS로 구분] 점수를 합산하여 배열로 리턴 */
-function getScores(data){
+function getScores(formData){
 
     let scores = [];
     let sum = 0;
 
-    let scoreKeys = [...data.keys()];
-
-    if( scoreKeys.length !== QUESTION_STRINGS.length ) {
-        let index = 1;
-        // scoreKeys.forEach( (key, value) => {
-        //     const keyNum = Number(key.split('q')[1]);
-        //     if (keyNum !== index) {
-        //         document.querySelector(`[name=q${index}]`).focus();
-        //         return
-        //     } 
-        //     index += 1;
-        // });
-        // return false;
-    }
-
-    for (const [key, value] of data) {
+    for (const [key, value] of formData) {
 
 
         const idx = Number(key.slice(1));
         let score = Number(value);
 
        
-        // 6에서 빼는 문제 계산 
+        // 6에서 빼는 항목 계산 
         if (EXCEPTION_NUMBERS.includes(idx)) {
             score = 6 - value;
         }
 
         sum = sum + score;
 
-        // 영역 구분까지 합산 후 배열에 추가
+        // 영역 구분 항목까지 합산 후 배열에 추가
         if (PARTS_NUMBERS.includes(idx)) {
             scores.push(sum);
             sum = 0;
@@ -194,6 +218,7 @@ function getScores(data){
 
     return scores;
 }
+
 
 
 /** 결과 점수 표시 후 레이어 보이기 */
@@ -227,6 +252,7 @@ function showResult(scores){
     backdropEl.dataset.hidden = false;
     resultEl.dataset.hidden = false;
 }
+
 
 
 /** 점수 초기화 & 결과 레이어 숨기기 */
