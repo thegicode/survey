@@ -54,7 +54,7 @@ const QUESTION_STRINGS = [
     '사람이나 일에 대한 고마움을 한참 시간이 지난 후에야 겨우 느낀다',
 ];
 const EXCEPTION_NUMBERS = [4, 5, 6, 10, 11, 12, 16, 17, 18, 22, 23, 24, 28, 29, 30, 34, 35, 36, 40, 41, 42, 51, 52, 53];
-const PARTS_NUMBERS = [18, 36, 53]
+const PART_NUMBERS = [18, 36, 53]
 
 const backdropEl = document.querySelector('#backdrop');
 const resultEl = document.querySelector('#result');
@@ -62,26 +62,34 @@ const resultEl = document.querySelector('#result');
 
 
 /** init */
-controlApp();
+controlSurvey();
 
 
 
 /** Main Control */
-function controlApp(){
-    const surveyEl = document.querySelector('#survey');
-    const fragment = new DocumentFragment;
-    // const cpnt = surveyEl.cloneNode(true);
+function controlSurvey(){
+    viewSurvey(QUESTION_STRINGS);
+    addEvents(QUESTION_STRINGS, EXCEPTION_NUMBERS, PART_NUMBERS);
+}
 
-    QUESTION_STRINGS
+
+
+/** fragment에 질문 항목 append 
+  * app(surveyEl)에 fragment append
+  */
+function viewSurvey(qustionStrings) {
+    const surveyEl = document.querySelector('#survey');
+    const virtualNode = new DocumentFragment;
+    // const virtualNode = surveyEl.cloneNode(true);
+
+    qustionStrings
         .map( (text, index) => getElement(text, index))
         .forEach( element => {
-            fragment.appendChild(element)
-            // cpnt.appendChild(element)
+            virtualNode.appendChild(element)
+            // virtualNode.appendChild(element)
         });
-    surveyEl.appendChild(fragment);
-    // surveyEl.replaceWith(cpnt);
-
-    addEvents();
+    surveyEl.appendChild(virtualNode);
+    // surveyEl.replaceWith(virtualNode);
 }
 
 
@@ -124,7 +132,7 @@ function getElement(text, index){
 
 
 /** 모든 이벤트는 여기에 */
-function addEvents() {
+function addEvents(questionStrings, exceptNumbers, partNumbers) {
 
     /** Form Submit Event
       * Check validate가 true 이면
@@ -137,12 +145,12 @@ function addEvents() {
         .addEventListener('submit', function(event) {
             event.preventDefault();
 
-            if (!validates(this)) {
+            if (!validates(this, questionStrings.length)) {
                 return false;
             }
 
             const formData = new FormData(this);
-            const scores = getScores(formData);
+            const scores = getScores(formData, exceptNumbers, partNumbers);
             // let obj = {};
 
             if(!scores){
@@ -157,14 +165,14 @@ function addEvents() {
       * 클릭 시 결과 화면 hide 
       */
     backdropEl
-        .addEventListener('click', hideResult );
+        .addEventListener('click', hideResult);
 
     /** 결과 컴포넌트
       * 닫기 버튼 클릭 시 결과 화면 hide
       */
     resultEl
         .querySelector('button')
-        .addEventListener('click', hideResult )
+        .addEventListener('click', hideResult);
 };
 
 
@@ -174,13 +182,12 @@ function addEvents() {
   * 모든 항목 체크 확인 : return true
   * 체크안되어 있으면 focus 이동 : return false
   */
-function validates(form) {
-    const length = QUESTION_STRINGS.length;
+function validates(formEl, length) {
     for (let i=1 ; i <= length ; i++) {
         const name = `q${i}`;
-        const radioNodes = form[name];
+        const radioNodes = formEl[name];
         if (!radioNodes.value) {
-            document.querySelector(`[name=${name}]`).focus()
+            formEl.querySelector(`[name=${name}]`).focus()
             alert(`${name}번을 체크해주세요.`);
             return false;
         }
@@ -191,7 +198,7 @@ function validates(form) {
 
 
 /** 각 영역별[PARTS_NUMBERS로 구분] 점수를 합산하여 배열로 리턴 */
-function getScores(formData){
+function getScores(formData, exceptNumbers, partNumbers){
 
     let scores = [];
     let sum = 0;
@@ -204,14 +211,14 @@ function getScores(formData){
 
        
         // 6에서 빼는 항목 계산 
-        if (EXCEPTION_NUMBERS.includes(idx)) {
+        if (exceptNumbers.includes(idx)) {
             score = 6 - value;
         }
 
         sum = sum + score;
 
         // 영역 구분 항목까지 합산 후 배열에 추가
-        if (PARTS_NUMBERS.includes(idx)) {
+        if (partNumbers.includes(idx)) {
             scores.push(sum);
             sum = 0;
         }
