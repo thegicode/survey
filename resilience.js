@@ -258,15 +258,26 @@ function showResult(scores){
         .querySelector('[data-score=p3]')
         .textContent = scores[2];
 
+
+    const mailStr = `총점: ${total}, 자기조정능력: ${scores[0]}, 대인관계능력: ${scores[1]}, 긍정성: ${scores[2]}`
+    resultEl
+        .querySelector('[data-href=mail]')
+        .href=`mailto:?subject=KRQ-53-Result&body=${mailStr}`;
+
     document.body.dataset.scroll = false;
     backdropEl.dataset.hidden = false;
     resultEl.dataset.hidden = false;
+
+    
 }
 
 
 
 /** 점수 초기화 & 결과 레이어 숨기기 */
 function hideResult(){
+    resultEl
+        .querySelector('[data-href=mail]')
+        .href = '';
     document.body.dataset.scroll = true;
     backdropEl.dataset.hidden = true;
     resultEl.dataset.hidden = true;
