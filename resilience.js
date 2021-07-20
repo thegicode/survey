@@ -218,7 +218,7 @@ function getScores(formData, exceptNumbers, partNumbers){
         sum = sum + score;
 
         // 영역 구분 항목까지 합산 후 배열에 추가
-        if (partNumbers.includes(idx)) {
+        if (partNumbers.includes(idx)) {   
             scores.push(sum);
             sum = 0;
         }
@@ -259,15 +259,15 @@ function showResult(scores){
         .textContent = scores[2];
 
 
+    // 메일 내용에 회복탄력성 점수 입력
     const mailStr = `총점: ${total}, 자기조정능력: ${scores[0]}, 대인관계능력: ${scores[1]}, 긍정성: ${scores[2]}`
     resultEl
         .querySelector('[data-href=mail]')
-        .href=`mailto:?subject=KRQ-53-Result&body=${mailStr}`;
+        .href=`mailto:?subject=회복탄력성 점수&body=${mailStr}`;
 
     document.body.dataset.scroll = false;
     backdropEl.dataset.hidden = false;
     resultEl.dataset.hidden = false;
-
     
 }
 
