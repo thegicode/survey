@@ -188,7 +188,7 @@ function validates(formEl, length) {
         const radioNodes = formEl[name];
         if (!radioNodes.value) {
             formEl.querySelector(`[name=${name}]`).focus()
-            alert(`${name}번을 체크해주세요.`);
+            alert(`${i}번을 체크해주세요.`);
             return false;
         }
     }
