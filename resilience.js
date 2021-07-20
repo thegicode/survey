@@ -120,9 +120,9 @@ function getElement(text, index){
             el.name = `q${index+1}`;
 
             // For test
-            if(idx === 3) {
-                el.checked = true;
-            }
+            // if(idx === 3) {
+            //     el.checked = true;
+            // }
 
         });
 
