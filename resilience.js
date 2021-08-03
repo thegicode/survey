@@ -120,7 +120,7 @@ function getElement(text, index){
             el.name = `q${index+1}`;
 
             // For test
-            // if(idx === 3) {
+            // if(idx === 0) {
             //     el.checked = true;
             // }
 
@@ -263,12 +263,17 @@ function showResult(scores){
     const mailStr = `총점: ${total}, 자기조정능력: ${scores[0]}, 대인관계능력: ${scores[1]}, 긍정성: ${scores[2]}`
     resultEl
         .querySelector('[data-href=mail]')
-        .href=`mailto:?subject=회복탄력성 점수&body=${mailStr}`;
+        .href=`mailto:?subject=회복탄력성 점수&body=${mailStr}`
+
+    resultEl
+        .querySelector('[data-href=mail-dev]')
+        .href=`mailto:thegi.code@gmail.com?subject=회복탄력성 점수&body=${mailStr}`;
 
     document.body.dataset.scroll = false;
     backdropEl.dataset.hidden = false;
     resultEl.dataset.hidden = false;
-    
+
+
 }
 
 
@@ -277,6 +282,9 @@ function showResult(scores){
 function hideResult(){
     resultEl
         .querySelector('[data-href=mail]')
+        .href = '';
+    resultEl
+        .querySelector('[data-href=mail-dev]')
         .href = '';
     document.body.dataset.scroll = true;
     backdropEl.dataset.hidden = true;
