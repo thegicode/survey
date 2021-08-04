@@ -205,6 +205,15 @@ function showResult(scores) {
     resultEl.dataset.hidden = false;
 }
 
+/** 점수 초기화 & 결과 레이어 숨기기 */
+function hideResult() {
+    resultEl.querySelector('[data-href=mail]').href = '';
+    resultEl.querySelector('[data-href=mail-dev]').href = '';
+    document.body.dataset.scroll = true;
+    backdropEl.dataset.hidden = true;
+    resultEl.dataset.hidden = true;
+}
+
 function handleResultEl_(total, scores) {
     resultEl.querySelector('[data-score=total]').textContent = total;
 
@@ -219,13 +228,4 @@ function handleResultEl_(total, scores) {
     resultEl.querySelector('[data-href=mail]').href = 'mailto:?subject=\uD68C\uBCF5\uD0C4\uB825\uC131 \uC810\uC218&body=' + mailStr;
 
     resultEl.querySelector('[data-href=mail-dev]').href = 'mailto:thegi.code@gmail.com?subject=\uD68C\uBCF5\uD0C4\uB825\uC131 \uC810\uC218&body=' + mailStr;
-}
-
-/** 점수 초기화 & 결과 레이어 숨기기 */
-function hideResult() {
-    resultEl.querySelector('[data-href=mail]').href = '';
-    resultEl.querySelector('[data-href=mail-dev]').href = '';
-    document.body.dataset.scroll = true;
-    backdropEl.dataset.hidden = true;
-    resultEl.dataset.hidden = true;
 }

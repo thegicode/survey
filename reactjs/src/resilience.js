@@ -203,6 +203,21 @@ function showResult(scores) {
 }
 
 
+
+/** 점수 초기화 & 결과 레이어 숨기기 */
+function hideResult(){
+    resultEl
+        .querySelector('[data-href=mail]')
+        .href = '';
+    resultEl
+        .querySelector('[data-href=mail-dev]')
+        .href = '';
+    document.body.dataset.scroll = true;
+    backdropEl.dataset.hidden = true;
+    resultEl.dataset.hidden = true;
+}
+
+
 function handleResultEl_(total, scores) {
     resultEl
         .querySelector('[data-score=total]')
@@ -230,20 +245,6 @@ function handleResultEl_(total, scores) {
     resultEl
         .querySelector('[data-href=mail-dev]')
         .href=`mailto:thegi.code@gmail.com?subject=회복탄력성 점수&body=${mailStr}`;
-}
-
-
-/** 점수 초기화 & 결과 레이어 숨기기 */
-function hideResult(){
-    resultEl
-        .querySelector('[data-href=mail]')
-        .href = '';
-    resultEl
-        .querySelector('[data-href=mail-dev]')
-        .href = '';
-    document.body.dataset.scroll = true;
-    backdropEl.dataset.hidden = true;
-    resultEl.dataset.hidden = true;
 }
 
 
