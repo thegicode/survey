@@ -5,12 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회복탄력성 지수(KRQ-53 테스트)</title>
     <link rel="stylesheet" type="text/css" href="resilience.css">
-
-    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
-    
-    <!-- <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script> -->
 </head>
 <body data-scroll="true">
 
@@ -28,11 +22,8 @@
 
         <p>각 문항을 읽은 후 해당하는 항목에 체크해주세요.</p>
 
-        <form id="form">
-            <ol class="survey" id="survey">
-            </ol>
-            <button type="submit" class="submitButton">완료</button>
-        </form>
+        <div id="serveys"></div>
+
     </main>
 
 
@@ -132,40 +123,10 @@
     </div>
 
 
-    <template data-template="surveys">
-        <li class="survey">
-            <p class="question" data-text="question"></p>
-            <div class="inputs">
-                <label>
-                    <input type="radio" name="" value="1">
-                    <span>전혀 그렇지 않다</span>
-                </label>
-                <label>
-                    <input type="radio" name="" value="2">
-                    <span>그렇지 않다</span>
-                </label>
-                <label>
-                    <input type="radio" name="" value="3">
-                    <span>보통이다</span>
-                </label>
-                <label>
-                    <input type="radio" name="" value="4">
-                    <span>어느 정도 그렇다</span>
-                </label>
-                <label>
-                    <input type="radio" name="" value="5">
-                    <span>매우 그렇다</span>
-                </label>
-            </div>
-        </li>
-    </template>
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
 
-
-    <template data-template="here">
-        <span>You're here"</span>
-    </template>
-
-    <script src="resilience.js"></script>
+    <script src="lib/resilience.js"></script>
 
 </body>
 </html>

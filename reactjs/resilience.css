@@ -1,0 +1,186 @@
+body{
+    margin: 1.5rem;
+}
+body[data-scroll=false]{
+    overflow: hidden;
+}
+h1 {
+    margin-bottom: 40px;
+}
+
+button{
+    min-width: 60px;
+    padding: 7px;
+    border-radius: 20px;
+    border: solid 1px rgba(0, 150, 0, 0.2);
+    background: rgba(0, 150, 0, 0.1);
+    font-size: 1rem;
+    color: rgba(0, 0, 0, 0.7);
+}
+button:hover{
+    border: solid 1px rgba(0, 150, 0, 0.25);
+    background: rgba(0, 150, 0, 0.15);
+    color: rgba(0, 0, 0, 0.75);
+}
+button:active{
+    border: solid 1px rgba(0, 150, 0, 0.3);
+    background: rgba(0, 150, 0, 0.2);
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.main{}
+.summary{
+    padding: 1.2rem;
+    border-radius: 1rem;
+    border: solid 1px rgba(0, 125, 0, 0.2);
+    background: rgba(0, 125, 0, 0.1);
+    line-height: 1.5;
+    color: rgba(0, 100, 100, 1);
+}
+.summary p {
+    margin: 0;
+}
+.survey{
+    margin-top: 30px;
+    padding-left: 1rem;
+}
+.survey{
+    padding-bottom: 20px;
+    /*border-bottom: dashed 1px rgba(0, 0, 0, 0.2);*/
+}
+.survey .question{
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+.survey .inputs{
+}
+.survey .inputs label {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    font-size: 14px;
+}
+.survey .inputs input{
+    margin-right: 7px;
+}
+.main .submitButton{
+    width: 100%;
+    margin: 1rem 0;
+}
+
+.backdrop{
+    position: fixed;
+    top: 0; right: 0; bottom: 0; left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    opacity: 1;
+    width: 100%;
+    transition: opacity 0.5s;
+}
+.backdrop[data-hidden=true]{
+    width: 0;
+    opacity: 0;
+}
+
+.result{
+    overflow: auto;
+    position: fixed;
+    top: 0; right: 0; bottom: 0;
+    width: 90%;
+    box-sizing: border-box;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 1);
+    color: rgba(0, 0, 0, 0.9);
+    transform: translateX(0);
+    transition: transform 0.3s;
+}
+.result[data-hidden=true]{
+    transform: translateX(100%);
+}
+.result h2{
+    margin-top: 0;
+}
+.result h3{
+}
+.result h3 span{
+    font-size: 1rem;
+}
+.result .title{
+    margin: 30px 0 10px;
+}
+.result .myScore{
+    padding: 10px 10px 5px;
+    border-bottom: 1px solid rgba(0, 125, 0, 0.3);
+    background: rgba(0, 125, 0, 0.1);
+    font-size: 1rem;
+    clor: rgba(0, 0, 0, 0.8);
+}
+.result .myScore .__score{
+    font-size: 1.2rem;
+    color: rgba(0, 150, 136, 1);
+}
+.result .section:not(:nth-of-type(1)){
+    margin-top: 30px;
+}
+
+.result .guides {
+    /*line-height: 2;*/
+}
+.result .guides dt{
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+    padding: 5px 0;
+    /*background: rgba(0, 180, 0, 0.05);;*/
+    font-size: 14px;
+    font-weight: bold;
+    color: rgba(0, 125, 0, 0.9);
+}
+.result .guides dt:before{
+    content: '';
+    display: block;
+    width: 7px;
+    height: 3px;
+    margin-right: 5px;
+    background: rgba(0, 180, 0, 0.3);
+}
+/*.guides dt[data-emphasis=true]:after{
+    content: "You're here";
+    display: block;
+    margin-left: 5px;
+    padding: 3px 10px;
+    border-radius: 10px;
+    border: solid 1px rgba(150, 0, 200, 0.1);
+    background: rgba(150, 0, 200, 0.1);
+    font-size: 11px;
+    font-weight: normal;
+    color: rgba(150, 0, 200, 0.7);
+}
+*/
+.result .guides dd{
+    margin-left: 7px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.result .mailLink {
+    display: block;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-size: 1.3rem;
+    color: rgba(0, 125, 0, 1);
+}
+
+.result .closeButton{
+    width:  100%;
+    margin-top: 1rem;
+    font-size: 14px;
+}
+
+
+/*.closeButton{
+    padding: 5px 20px;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 15px;
+    border: solid 1px rgba(0, 0, 0, 0.05);
+}*/
