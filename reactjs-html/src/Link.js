@@ -1,4 +1,4 @@
-import React from 'react'
+// import React from 'react'
 
 const useState = React.useState;
 
@@ -24,9 +24,11 @@ const Link = ({page, children}) => {
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
-      {children || 'default'}
+      {children || status}
     </a>
   );
 };
 
-export default Link;
+const el = React.createElement;
+const domContainer = document.querySelector('#root');
+ReactDOM.render(el(Link), domContainer);
