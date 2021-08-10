@@ -51,7 +51,6 @@ const handleSubmit = props => event => {
     showResult(scores)
 }
 
-
 export default (props) => {
     return(
         <form onSubmit={handleSubmit(props)}>

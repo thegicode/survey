@@ -76,7 +76,7 @@ const Labels = (props) => {
     return labels
 }
 
-const Element = (text, index) => {
+const getElement = (text, index) => {
     if (!text) {
         return
     }
@@ -95,7 +95,7 @@ const Element = (text, index) => {
 
 export default () => {
     const surveys = QUESTION_STRINGS
-        .map( (text, index) => Element(text, index))
+        .map( (text, index) => getElement(text, index))
 
     return surveys
 }

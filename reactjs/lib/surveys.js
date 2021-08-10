@@ -20,7 +20,7 @@ var Labels = function Labels(props) {
     return labels;
 };
 
-var Element = function Element(text, index) {
+var getElement = function getElement(text, index) {
     if (!text) {
         return;
     }
@@ -45,7 +45,7 @@ var Element = function Element(text, index) {
 
 export default (function () {
     var surveys = QUESTION_STRINGS.map(function (text, index) {
-        return Element(text, index);
+        return getElement(text, index);
     });
 
     return surveys;
