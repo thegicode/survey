@@ -6,7 +6,7 @@ import Result from './Result.js'
 
 import './App.css';
 
-function App() {
+export default function App() {
     
     const [scores, setScores] = useState([]);
     const [isBackdropHidden, setBackdropHidden] = useState(true);
@@ -50,4 +50,4 @@ function App() {
 
 }
 
-export default App;
+

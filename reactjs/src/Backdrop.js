@@ -1,5 +1,5 @@
 
-const Backdrop = (props) => {
+export default function Backdrop(props) {
     const { 
         isBackdropHidden,
         hideResult
@@ -15,4 +15,3 @@ const Backdrop = (props) => {
     )
 }
 
-export default Backdrop

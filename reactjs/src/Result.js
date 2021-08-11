@@ -1,5 +1,5 @@
 
-const Result = (props) => {
+export default function Result(props) {
     
     const { 
         scores, 
@@ -123,5 +123,4 @@ const Result = (props) => {
     )
 }
 
-export default Result 
 
