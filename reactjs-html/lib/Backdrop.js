@@ -1,5 +1,5 @@
 
-var Backdrop = function Backdrop(props) {
+export default function Backdrop(props) {
     var isBackdropHidden = props.isBackdropHidden,
         hideResult = props.hideResult;
 
@@ -9,6 +9,4 @@ var Backdrop = function Backdrop(props) {
         "aria-hidden": isBackdropHidden,
         onClick: hideResult
     });
-};
-
-export default Backdrop;
+}

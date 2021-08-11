@@ -2,7 +2,7 @@ var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = [
 
 import Surveys from './Surveys.js';
 
-var SurveyForm = function SurveyForm(_ref) {
+export default function SurveyForm(_ref) {
     var showResult = _ref.showResult;
 
 
@@ -90,6 +90,4 @@ var SurveyForm = function SurveyForm(_ref) {
             "\uC644\uB8CC"
         )
     );
-};
-
-export default SurveyForm;
+}

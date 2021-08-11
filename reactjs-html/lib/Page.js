@@ -7,7 +7,7 @@ import Main from './Main.js';
 import Backdrop from './Backdrop.js';
 import Result from './Result.js';
 
-var Page = function Page(props) {
+export default function Page(props) {
     var _useState = useState([]),
         _useState2 = _slicedToArray(_useState, 2),
         scores = _useState2[0],
@@ -62,6 +62,4 @@ var Page = function Page(props) {
             isResultHidden: isResultHidden,
             hideResult: hideResult })
     );
-};
-
-export default Page;
+}

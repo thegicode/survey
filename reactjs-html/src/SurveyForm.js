@@ -1,6 +1,6 @@
 import Surveys from './Surveys.js'
 
-const SurveyForm = ({ showResult }) => {
+export default function SurveyForm({ showResult }) {
 
     /** 각 영역별[PARTS_NUMBERS로 구분] 점수를 합산하여 배열로 리턴 */
     const getScores = (formData) => {
@@ -56,5 +56,5 @@ const SurveyForm = ({ showResult }) => {
     )
 }
 
-export default SurveyForm
+
 

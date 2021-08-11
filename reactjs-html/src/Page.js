@@ -6,7 +6,7 @@ import Main from './Main.js'
 import Backdrop from './Backdrop.js'
 import Result from './Result.js'
 
-const Page = (props) => {
+export default function Page(props) {
 
     const [scores, setScores] = useState([]);
     const [isBackdropHidden, setBackdropHidden] = useState(true);
@@ -48,7 +48,5 @@ const Page = (props) => {
         </React.Fragment>
     )
 }
-
-export default Page  
 
 

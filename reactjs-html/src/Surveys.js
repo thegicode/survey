@@ -1,5 +1,5 @@
 
-const Survey = () => {
+export default function Surveys() {
 
     const QUESTION_STRINGS = [
         '나는 어려운 일이 닥쳤을 때 감정을 통제할 수 있다',
@@ -101,4 +101,3 @@ const Survey = () => {
     return surveys
 }
 
-export default Survey

@@ -1,6 +1,6 @@
 import SurveyForm from './SurveyForm.js';
 
-var Main = function Main(_ref) {
+export default function Main(_ref) {
     var showResult = _ref.showResult;
 
     return React.createElement(
@@ -36,6 +36,4 @@ var Main = function Main(_ref) {
         ),
         React.createElement(SurveyForm, { showResult: showResult })
     );
-};
-
-export default Main;
+}
