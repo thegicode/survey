@@ -1,7 +1,6 @@
 import SurveyForm from './SurveyForm.js'
 
-export default (props) => {
-    const { showResult } = props
+const Main = ({ showResult }) => {
     return(
         <main className="main">
             <h1>
@@ -22,3 +21,5 @@ export default (props) => {
         </main>
     )
 }
+
+export default Main

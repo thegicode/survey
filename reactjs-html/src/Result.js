@@ -1,5 +1,5 @@
 
-export default (props) => {
+const Result = (props) => {
     
     const { 
         scores, 
@@ -119,3 +119,5 @@ export default (props) => {
         </div>
     )
 }
+
+export default Result 

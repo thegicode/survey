@@ -1,17 +1,21 @@
 
 const useState = React.useState;
+const useEffect = React.useEffect;
 
 import Main from './Main.js'
 import Backdrop from './Backdrop.js'
 import Result from './Result.js'
 
-
-export default (props) => {
+const Page = (props) => {
 
     const [scores, setScores] = useState([]);
     const [isBackdropHidden, setBackdropHidden] = useState(true);
     const [isResultHidden, setResultHidden] = useState(true);
+    const [isBodyScroll, setBodyScroll] = useState(true);
 
+    useEffect( () => {
+        document.body.dataset.scroll = isBodyScroll;
+    })
 
     const showResult = (scores) => {
         if(scores.length < 3) {
@@ -20,16 +24,15 @@ export default (props) => {
 
         setScores(scores)
 
-        document.body.dataset.scroll = false;
         setBackdropHidden(false)
         setResultHidden(false)
+        setBodyScroll(false)
     }
 
-
     function hideResult(){
-        document.body.dataset.scroll = true;
         setBackdropHidden(true)
         setResultHidden(true)
+        setBodyScroll(true)
     }
 
     return(
@@ -45,4 +48,7 @@ export default (props) => {
         </React.Fragment>
     )
 }
+
+export default Page  
+
 

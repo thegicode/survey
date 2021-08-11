@@ -1,5 +1,5 @@
 
-export default (function (props) {
+var Result = function Result(props) {
     var scores = props.scores,
         isResultHidden = props.isResultHidden,
         hideResult = props.hideResult;
@@ -331,4 +331,6 @@ export default (function (props) {
             "\uB2EB\uAE30"
         )
     );
-});
+};
+
+export default Result;

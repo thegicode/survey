@@ -1,5 +1,5 @@
 
-export default (props) => {
+const Backdrop = (props) => {
     const { 
         isBackdropHidden,
         hideResult
@@ -14,3 +14,5 @@ export default (props) => {
         </div>
     )
 }
+
+export default Backdrop
