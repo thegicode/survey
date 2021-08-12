@@ -4,8 +4,9 @@
   "description": "",
   "main": "resilience.js",
   "scripts": {
-    "start": "npx babel --watch src --out-dir lib --presets react-app/prod",
+    "start": "npm run server && npm run babel",
     "server": "npx http-server",
+    "babel": "npx babel --watch src --out-dir lib --presets react-app/prod",
     "test": "jest"
   },
   "author": "",
