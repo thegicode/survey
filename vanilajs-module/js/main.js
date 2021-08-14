@@ -55,7 +55,7 @@ const handleSubmit = (constants, handleShowResult) => (event) => {
     event.preventDefault();
 
     const { QUESTIONS, EXCEPTION_NUMBERS, PART_NUMBERS } = constants
-    
+
     const formEl = event.target
 
     if (!validates(formEl, QUESTIONS.length)) {
@@ -70,7 +70,7 @@ const handleSubmit = (constants, handleShowResult) => (event) => {
         return
     }
 
-    handleShowResult(true, scores)
+    handleShowResult(scores)
 }
 
 
