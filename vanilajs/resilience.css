@@ -76,7 +76,7 @@ button:active{
     width: 100%;
     transition: opacity 0.5s;
 }
-.backdrop[data-hidden=true]{
+.backdrop[aria-hidden=true]{
     width: 0;
     opacity: 0;
 }
@@ -93,7 +93,7 @@ button:active{
     transform: translateX(0);
     transition: transform 0.3s;
 }
-.result[data-hidden=true]{
+.result[aria-hidden=true]{
     transform: translateX(100%);
 }
 .result h2{

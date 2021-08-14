@@ -270,8 +270,8 @@ function showResult(scores){
         .href=`mailto:thegi.code@gmail.com?subject=회복탄력성 점수&body=${mailStr}`;
 
     document.body.dataset.scroll = false;
-    backdropEl.dataset.hidden = false;
-    resultEl.dataset.hidden = false;
+    backdropEl.setAttribute('aria-hidden', false);
+    resultEl.setAttribute('aria-hidden', false);
 
 
 }
@@ -287,8 +287,8 @@ function hideResult(){
         .querySelector('[data-href=mail-dev]')
         .href = '';
     document.body.dataset.scroll = true;
-    backdropEl.dataset.hidden = true;
-    resultEl.dataset.hidden = true;
+    backdropEl.setAttribute('aria-hidden', true);
+    resultEl.setAttribute('aria-hidden', true);
 }
 
 
