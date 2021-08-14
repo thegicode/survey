@@ -30,7 +30,7 @@ const getElement = (text, index) => {
 };
 
 
-export default function surveys(QUESTIONS) {
+export default (QUESTIONS) => {
 
     const surveyEl = document.querySelector('#survey')
 

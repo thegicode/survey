@@ -83,7 +83,7 @@ const addEvents = () => {
 }
 
 
-export default function resultAndBackdrop() {
+export default () => {
 
     addEvents()
 

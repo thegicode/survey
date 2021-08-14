@@ -74,7 +74,7 @@ const handleSubmit = (constants, handleShowResult) => (event) => {
 }
 
 
-export default function main(constants, handleShowResult) {
+export default (constants, handleShowResult) => {
 
     const { QUESTIONS } = constants
 
