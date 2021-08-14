@@ -1,5 +1,5 @@
-import surveys from './surveys.js'
 
+import surveys from './surveys.js'
 
 /** 각 영역별[PARTS_NUMBERS로 구분] 점수를 합산하여 배열로 리턴 */
 const getScores = (formData, exceptNumbers, partNumbers) => {
@@ -52,10 +52,10 @@ const validates = (formEl, length) => {
 
 const handleSubmit = (constants, handleShowResult) => (event) => {
 
-    const { QUESTIONS, EXCEPTION_NUMBERS, PART_NUMBERS } = constants
-
     event.preventDefault();
 
+    const { QUESTIONS, EXCEPTION_NUMBERS, PART_NUMBERS } = constants
+    
     const formEl = event.target
 
     if (!validates(formEl, QUESTIONS.length)) {
@@ -71,7 +71,6 @@ const handleSubmit = (constants, handleShowResult) => (event) => {
     }
 
     handleShowResult(true, scores)
-
 }
 
 
@@ -79,10 +78,10 @@ export default function main(constants, handleShowResult) {
 
     const { QUESTIONS } = constants
 
-    // 설문조사 만들기
+    // 설문항목 만들기
     surveys(QUESTIONS)
 
-    // event
+    // Form submit event
     document
         .querySelector('#form')
         .addEventListener('submit', handleSubmit(constants, handleShowResult))

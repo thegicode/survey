@@ -20,18 +20,11 @@ export default function resultAndBackdrop() {
             .querySelector('[data-score=total]')
             .textContent = total;
 
-        resultEl
-            .querySelector('[data-score=p1]')
-            .textContent = scores[0];
-
-        resultEl
-            .querySelector('[data-score=p2]')
-            .textContent = scores[1];
-
-        resultEl
-            .querySelector('[data-score=p3]')
-            .textContent = scores[2];
-
+        for(let i=0 ; i < 3 ; i++) {
+            resultEl
+                .querySelector(`[data-score=p${i+1}]`)
+                .textContent = scores[`${i}`];
+        }
 
         // 메일 내용에 회복탄력성 점수 입력
         const mailStr = `총점: ${total}, 자기조정능력: ${scores[0]}, 대인관계능력: ${scores[1]}, 긍정성: ${scores[2]}`
