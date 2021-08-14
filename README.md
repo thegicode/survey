@@ -12,4 +12,3 @@ https://thegicode.github.io/survey/vanilajs-module/
 https://thegicode.github.io/survey/reactjs-html/
 
 ## ReactJs
-https://thegicode.github.io/survey/reactjs/
