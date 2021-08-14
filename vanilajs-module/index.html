@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회복탄력성 지수(KRQ-53 테스트)</title>
+    <link rel="stylesheet" type="text/css" href="resilience.css">
+
+</head>
+<body data-scroll="true">
+
+    <main class="main">
+        <h1>
+            나의 회복탄력성 지수는?<br>
+            KRQ-53 테스트
+        </h1>
+
+        <div class="summary">
+            <p>이 테스트는 "회복탄력성"이라는 좋은 책을 있고 책에 있는 회복탄력성 지수 테스트를 주기적으로 하기 위해 만들었다.<br>
+                테스트 결과와 관련된 상세한 내용은 책을 꼭 읽어보길 바란다.  </p>
+            <p>"회복탄력성", 김주환 지음, 위즈덤하우스 </p>
+        </div>
+
+        <p>각 문항을 읽은 후 해당하는 항목에 체크해주세요.</p>
+
+        <form id="form">
+            <ol class="survey" id="survey">
+            </ol>
+            <button type="submit" class="submitButton">완료</button>
+        </form>
+    </main>
+
+
+    <div class="backdrop" id="backdrop" aria-hidden="true"></div>
+
+    <div class="result" id="result" aria-hidden="true">
+        <h2>테스트 결과</h2>
+
+        <div class="myScore">
+            나의 회복탄력성 지수 :
+            <strong class="__score" data-score="total">300</strong>
+        </div>
+        <h3>회복탄력성 지수 <br> 
+            <span>= 1. 자기조절능력 + 2. 대인관계능력 + 3. 긍정성</span>
+        </h3>
+        <dl class="guides">
+            <dt>220점 이상</dt>
+            <dd>당신은 대단히 회복 탄력성이 높은 사람이다. 웬만한 불행한 사건은 당신을 흔들어놓지 못한다. 
+                오히려 역경은 당신을 더 높은 곳으로 올려놓기 위한 스프링보드이니 즐겁게 받아들일 일이다.</dd>
+            <dt>212점 이상</dt>
+            <dd>상위 20%</dd>
+            <dt>200점 이상</dt>
+            <dd>안심</dd>
+            <dt>190점 이하(평균 195점)</dt>
+            <dd>회복탄력성을 높이기 위해 노력하는 것이 좋다.</dd>
+            <dt>180점 이하</dt>
+            <dd>당신은 사소한 부정적인 사건에도 쉽게 영향 받는 나약한 존재다. 당신은 되튀어 오를 힘을 빨리 길러야 한다.</dd>
+            <dt>170점 이하</dt>
+            <dd >당신은 깨지기 쉬운 유리 같은 존재라 할 수 있다. 작은 불행에도 쉽게 상처를 입게 되며 그 상처는 치유하기 어려울 것이다. 
+                하루하루 살얼음 위를 걷는 기분으로 살아온 당신은 지금 당장 회복탄력성을 높이기 위해 온 힘을 기울여야 한다.
+            </dd>
+        </dl>
+
+        <h3 class="title">좀 더 상세하게</h3>
+        <section class="section">
+            <h4>1. 자기조절능력 = 감정조절력 + 충동통제력 + 원인분석력</h4>
+            <div class="myScore">
+                나의 자기조절능력 점수 : 
+                <strong class="__score" data-score="p1"></strong>
+            </div>
+            <dl class="guides">
+                <dt>75점 이상(상위 7% 이내)</dt>
+                <dd>자부심을 가져도 좋다.</dd>
+                <dt>70점 이상</dt>
+                <dd>별 문제 없다.</dd>
+                <dt>63점 이하(평균 63.5점)</dt>
+                <dd>자기조절능력을 높이기 위해 노력하는 것이 좋다.</dd>
+                <dt>55점 이하(하위 20% 이하)</dt>
+                <dd>자기조절능력을 향상시키기 위해 반드시 노력해야 한다.</dd>
+            </dl>
+        </section>
+
+        <section class="section">
+            <h4>2. 대인관계능력 = 소통능력 + 공감능력 + 자아확장력</h4>
+            <div class="myScore">
+                나의 대인관계능력 점수 : 
+                <strong class="__score" data-score="p2"></strong>
+            </div>
+            <dl class="guides">
+                <dt>80점 이상(상위 6% 이내)</dt>
+                <dd>대인관계와 사회성이 아주 뛰어난 편</dd>
+                <dt>74점 이상</dt>
+                <dd>별 문제 없다.</dd>
+                <dt>67점 이하(평균 67.8점)</dt>
+                <dd>대인관계능력을 높이기 위해 반드시 노력해야 한다.</dd>
+                <dt>62점 이하(하위 20% 이하)</dt>
+                <dd>대인관계능력을 높이기 위해 반드시 노력해야 한다.</dd>
+            </dl>
+        </section>
+
+        <section class="section">
+            <h4>3. 긍정성 = 자아낙관성 + 생활만족도 + 감사하기</h4>
+            <div class="myScore">
+                나의 대인관계능력 점수 : 
+                <strong class="__score" data-score="p3"></strong>
+            </div>
+            <dl class="guides">
+                <dt>75점 이상(상위 6% 이내)</dt>
+                <dd>당신은 대단히 긍정성이 높은 사람</dd>
+                <dt>70점 이상</dt>
+                <dd>별 문제 없다.</dd>
+                <dt>63점 이하(평균 63.4점)</dt>
+                <dd>긍정성을 높이기 위해 노력해야 한다.</dd>
+                <dt>56점 이하(하위 20% 이하)</dt>
+                <dd>긍정성을 높이기 위해 반드시 노력해야 한다.</dd>
+            </dl>
+        </section>
+
+        <section class="section">
+            <!-- <h4>결과 점수 메일로 보내기</h4> -->
+            <a class="mailLink" data-href="mail">결과 점수 메일로 보내기</a>
+            <a class="mailLink" data-href="mail-dev">결과 점수 개발자 메일로 보내기</a>
+        </section>
+
+        <button type="button" class="closeButton">닫기</button>
+    </div>
+
+
+    <template data-template="surveys">
+        <li class="survey">
+            <p class="question" data-text="question"></p>
+            <div class="inputs">
+                <label>
+                    <input type="radio" name="" value="1">
+                    <span>전혀 그렇지 않다</span>
+                </label>
+                <label>
+                    <input type="radio" name="" value="2">
+                    <span>그렇지 않다</span>
+                </label>
+                <label>
+                    <input type="radio" name="" value="3">
+                    <span>보통이다</span>
+                </label>
+                <label>
+                    <input type="radio" name="" value="4">
+                    <span>어느 정도 그렇다</span>
+                </label>
+                <label>
+                    <input type="radio" name="" value="5">
+                    <span>매우 그렇다</span>
+                </label>
+            </div>
+        </li>
+    </template>
+
+
+    <script type="module" src="js/index.js"></script>
+
+</body>
+</html>
