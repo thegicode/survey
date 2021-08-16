@@ -1,4 +1,6 @@
 
+const cpnt = document.querySelector('#surveys')
+
 /** Create question element and return  */
 const getElement = (text, index) => {
     if (!text) {
@@ -32,10 +34,8 @@ const getElement = (text, index) => {
 
 export default (QUESTIONS) => {
 
-    const surveyEl = document.querySelector('#survey')
-
     /** fragment에 질문 항목 append 
-      * app(surveyEl)에 fragment append
+      * app(cpnt)에 fragment append
       */
     const virtualNode = new DocumentFragment;
     QUESTIONS
@@ -44,7 +44,7 @@ export default (QUESTIONS) => {
             virtualNode.appendChild(element)
         });
         
-    surveyEl.appendChild(virtualNode);
+    cpnt.appendChild(virtualNode);
    
 }
 

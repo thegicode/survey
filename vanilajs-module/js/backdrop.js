@@ -16,16 +16,17 @@ const hidden = (is) => {
 // }
 
 
-// export default {
-//     hidden
-// }
+export default {
+    cpnt,
+    hidden
+}
 
-export default () => {
+/*export default () => {
 
-    // addEvents()
+    addEvents()
 
     return {
         cpnt,
         hidden
     }
-}
+}*/
