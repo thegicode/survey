@@ -12,3 +12,10 @@ https://thegicode.github.io/survey/vanilajs-module/
 https://thegicode.github.io/survey/reactjs-html/
 
 ## ReactJs
+
+
+# Todo
+- loading
+- backdrop, reuslt 
+- eslint
+- test

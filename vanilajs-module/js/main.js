@@ -50,7 +50,7 @@ const validates = (formEl, length) => {
     return true;
 }
 
-const handleSubmit = (constants, handleShowResult) => (event) => {
+const handleSubmit = (constants, actions) => (event) => {
 
     event.preventDefault();
 
@@ -70,11 +70,11 @@ const handleSubmit = (constants, handleShowResult) => (event) => {
         return
     }
 
-    handleShowResult(scores)
+    actions.showResult(scores)
 }
 
 
-export default (constants, handleShowResult) => {
+export default (constants, actions) => {
 
     const { QUESTIONS } = constants
 
@@ -84,7 +84,8 @@ export default (constants, handleShowResult) => {
     // Form submit event
     document
         .querySelector('#form')
-        .addEventListener('submit', handleSubmit(constants, handleShowResult))
+        .addEventListener('submit', 
+            handleSubmit(constants, actions))
 
 }
 
