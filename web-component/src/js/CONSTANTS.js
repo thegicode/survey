@@ -58,7 +58,7 @@ const EXCEPTION_NUMBERS = [4, 5, 6, 10, 11, 12, 16, 17, 18, 22, 23, 24, 28, 29, 
 
 const PART_NUMBERS = [18, 36, 53]
 
-export default {
+export {
    QUESTIONS,
    EXCEPTION_NUMBERS,
    PART_NUMBERS

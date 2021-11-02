@@ -1,5 +1,4 @@
-import CONSTANTS  from './CONSTANTS.js'
-const { QUESTIONS } = CONSTANTS
+import { QUESTIONS }  from './CONSTANTS.js'
 
 const TEMPLATE = `<ol id="surveys" class="surveys"></ol>`
 
