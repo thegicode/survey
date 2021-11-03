@@ -1,5 +1,6 @@
+import {EVENT_OBJ, EVENTS } from './EVENTS.js'
 
-const eventEl = document.querySelector('#root')
+const { SHOW_RESULT, HIDE_RESULT } = EVENTS
 
 class Results extends HTMLDivElement {
     // static observedAttributes = ['aria-hidden']
@@ -7,14 +8,14 @@ class Results extends HTMLDivElement {
     constructor() {
         super()
 
-        eventEl.addEventListener(
-            'SHOW_RESULT',
+        EVENT_OBJ.addEventListener(
+            SHOW_RESULT,
             e => {
                 this.show()
             }
         )
-        eventEl.addEventListener(
-            'HIDE_RESULT',
+        EVENT_OBJ.addEventListener(
+            HIDE_RESULT,
             e => {
                 this.hide()
             }
@@ -23,12 +24,12 @@ class Results extends HTMLDivElement {
         this.querySelector('[data-button="close"]')
             .addEventListener('click', e => {
                 const event = new CustomEvent(
-                    'HIDE_RESULT',
+                    HIDE_RESULT,
                     {
                         detail: {}
                     }
                 )
-                eventEl.dispatchEvent(event)
+                EVENT_OBJ.dispatchEvent(event)
             })
     }
 
