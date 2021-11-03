@@ -1,7 +1,7 @@
-import List from './List.js'
-import Result from './Result.js'
-import Backdrop from './Backdrop.js'
-import {EVENT_OBJ, EVENTS } from './EVENTS.js'
+import List from './js/List.js'
+import Result from './js/Result.js'
+import Backdrop from './js/Backdrop.js'
+import {EVENT_OBJ, EVENTS } from './js/EVENTS.js'
 
 const { SHOW_RESULT } = EVENTS
 
