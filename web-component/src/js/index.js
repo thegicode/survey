@@ -1,9 +1,9 @@
 import List from './List.js'
-import Results from './Results.js'
+import Result from './Result.js'
 import Backdrop from './Backdrop.js'
 
 customElements.define('survey-list', List)
-customElements.define('results-layer', Results, {extends: 'div'})
+customElements.define('result-layer', Result, {extends: 'div'})
 customElements.define('backdrop-common', Backdrop, {extends: 'div'})
 
 const _onSubmit = () => {
