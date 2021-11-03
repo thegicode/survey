@@ -7,7 +7,7 @@ const { SHOW_RESULT } = EVENTS
 
 customElements.define('survey-list', List)
 customElements.define('result-layer', Result, {extends: 'div'})
-customElements.define('backdrop-common', Backdrop, {extends: 'div'})
+customElements.define('backdrop-layer', Backdrop, {extends: 'div'})
 
 const _onSubmit = () => {
     const event = new CustomEvent(
@@ -25,4 +25,3 @@ document
         e.preventDefault();
         _onSubmit()
     })
-    
